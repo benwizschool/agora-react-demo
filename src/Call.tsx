@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import useAgora from './hooks/useAgora';
 import MediaPlayer from './components/MediaPlayer';
@@ -7,12 +7,16 @@ import './Call.css';
 const client = AgoraRTC.createClient({ codec: 'h264', mode: 'rtc' });
 
 function Call() {
-  const [ appid, setAppid ] = useState('');
-  const [ token, setToken ] = useState('');
-  const [ channel, setChannel ] = useState('');
+  const [ appid, setAppid ] = useState('60dcb9c3c74b44b6b0b85aad121d4b3b');
+  const [ token, setToken ] = useState('00660dcb9c3c74b44b6b0b85aad121d4b3bIACczp3n9PhxqX87WJzYpVdkOoC9gs+GKMXYTuN/AC88IAx+f9gAAAAAEAAAO0SYnWqpYQEAAQCdaqlh');
+  const [ channel, setChannel ] = useState('test');
   const {
     localAudioTrack, localVideoTrack, leave, join, joinState, remoteUsers
   } = useAgora(client);
+
+  useEffect(() => {
+    document.getElementById("join")?.click();
+  })
 
   return (
     <div className='call'>
