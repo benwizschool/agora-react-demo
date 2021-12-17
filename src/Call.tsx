@@ -7,16 +7,23 @@ import './Call.css';
 const client = AgoraRTC.createClient({ codec: 'h264', mode: 'rtc' });
 
 function Call() {
-  const [ appid, setAppid ] = useState('60dcb9c3c74b44b6b0b85aad121d4b3b');
-  const [ token, setToken ] = useState('00660dcb9c3c74b44b6b0b85aad121d4b3bIACczp3n9PhxqX87WJzYpVdkOoC9gs+GKMXYTuN/AC88IAx+f9gAAAAAEAAAO0SYnWqpYQEAAQCdaqlh');
-  const [ channel, setChannel ] = useState('test');
+  const [ appid, setAppid ] = useState("");
+  const [ token, setToken ] = useState("");
+  const [ channel, setChannel ] = useState("");
   const {
     localAudioTrack, localVideoTrack, leave, join, joinState, remoteUsers
   } = useAgora(client);
+  const isRecord = new URLSearchParams(window.location.search).get("record");
 
   useEffect(() => {
-    document.getElementById("join")?.click();
-  })
+    if (isRecord) {
+      join(
+        "60dcb9c3c74b44b6b0b85aad121d4b3b",
+        "redbrick",
+        "00660dcb9c3c74b44b6b0b85aad121d4b3bIAA9ldSTy50tx/UtSSzwBGT56p1VMMbqgsdewW0UW5wbNatbzjAAAAAAEAA3+QZISS29YQEAAQBJLb1h",
+      );
+    }
+  }, [])
 
   return (
     <div className='call'>
