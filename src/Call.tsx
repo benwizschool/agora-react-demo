@@ -23,7 +23,8 @@ function Call() {
         "00660dcb9c3c74b44b6b0b85aad121d4b3bIAA9ldSTy50tx/UtSSzwBGT56p1VMMbqgsdewW0UW5wbNatbzjAAAAAAEAA3+QZISS29YQEAAQBJLb1h",
       );
     }
-  }, [isRecord, join])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className='call'>
